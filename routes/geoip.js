@@ -9,7 +9,7 @@ const agi = JSON.parse(agiData);
 
 // lookup current IP address
 route.get("/", (req, res) => {
-  res.redirect(`${req.baseUrl}/${getClientIp()}`);
+  res.redirect(`${req.baseUrl}/${getClientIp(req)}`);
 });
 
 // list of ranges that the service does not handle
