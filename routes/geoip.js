@@ -52,10 +52,12 @@ route.get("/:ip", (req, res) => {
 
           // Duplicate data
           delete geoData["income"]["state"];
+          
+          res.send(geoData);
         });
+      } else {
+        res.send(geoData);
       }
-
-      res.send(geoData);
     }
   } catch (err) {
     res.status(400).json({ message: err.message }).end();
