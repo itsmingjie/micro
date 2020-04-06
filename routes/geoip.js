@@ -9,7 +9,7 @@ const agi = JSON.parse(agiData);
 
 // lookup current IP address
 route.get("/", (req, res) => {
-  res.redirect(`${req.baseUrl}/${req.connection.remoteAddress}`);
+  res.redirect(`${req.baseUrl}/${getClientIp()}`);
 });
 
 // list of ranges that the service does not handle
@@ -64,6 +64,12 @@ route.get("/:ip", (req, res) => {
 
 async function getZip(loc) {
   return await geo2zip(loc);
+}
+
+// For Heroku
+function getClientIp(req) {
+  var ip = req.headers['x-forwarded-for'] ? req.headers['x-forwarded-for'].split(',')[0] : req.connection.remoteAddress;
+  console.log('IP: ', ip);
 }
 
 module.exports = route;
