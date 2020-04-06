@@ -34,8 +34,7 @@ route.get("/:ip", (req, res) => {
 
     if (invalidRanges.includes(ip.range())) {
       // Invalid Range (See constant above)
-      res.status(400);
-      res.send("Invalid IP address range.");
+      res.status(400).json({ message: "Invalid IP address range." }).end();
     } else if (ip.kind() == "ipv4") {
       // Find data related to the IP address
       var geoData = geoip.lookup(req.params.ip);
@@ -59,8 +58,7 @@ route.get("/:ip", (req, res) => {
       res.send(geoData);
     }
   } catch (err) {
-    res.status(400);
-    res.send(err.message);
+    res.status(400).json({ message: err.message }).end();
   }
 });
 
