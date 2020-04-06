@@ -69,7 +69,7 @@ async function getZip(loc) {
 // For Heroku
 function getClientIp(req) {
   var ip = req.headers['x-forwarded-for'] ? req.headers['x-forwarded-for'].split(',')[0] : req.connection.remoteAddress;
-  console.log('IP: ', ip);
+  return ip;
 }
 
 module.exports = route;
