@@ -5,14 +5,6 @@ const cors = require("cors");
 
 const port = process.env.PORT || 3000;
 
-// CORS support
-const corsOptions = {
-	origin: "*",
-	optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-};
-
-app.options("*", cors(corsOptions));
-
 // Rate limit at 5 requests per second
 const limiter = rateLimit({
 	windowMs: 1000,
@@ -27,6 +19,8 @@ app.get("/", (req, res) => {
 
 const api = require("express").Router();
 app.use("/api/", api);
+
+api.use(cors());
 
 // IP to Geoinformation
 const geoip = require("./routes/geoip.js");
