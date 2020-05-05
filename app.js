@@ -1,20 +1,29 @@
 const express = require("express");
 const app = express();
 const rateLimit = require("express-rate-limit");
+const cors = require("cors");
 
 const port = process.env.PORT || 3000;
 
+// CORS support
+const corsOptions = {
+	origin: [/\.mingjie\.dev$/, /\.mingjie\.info$/],
+	optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
+
+app.options("*", cors(corsOptions));
+
 // Rate limit at 5 requests per second
 const limiter = rateLimit({
-  windowMs: 1000,
-  max: 5
+	windowMs: 1000,
+	max: 5,
 });
 
 app.use(limiter);
 
 app.get("/", (req, res) => {
-  res.redirect("https://github.com/itsmingjie/micro");
-})
+	res.redirect("https://github.com/itsmingjie/micro");
+});
 
 const api = require("express").Router();
 app.use("/api/", api);
@@ -24,14 +33,14 @@ const geoip = require("./routes/geoip.js");
 api.use("/geoip", geoip);
 
 // Toggl data
-const toggl = require("./routes/toggl.js")
+const toggl = require("./routes/toggl.js");
 api.use("/toggl", toggl);
 
 // Hit test
 api.get("/", function (req, res) {
-  res.status(200).json({message: "Up and running!"}).end();
+	res.status(200).json({ message: "Up and running!" }).end();
 });
 
 app.listen(port, () => {
-  console.log(`Micro is listening at port ${port}`)
+	console.log(`Micro is listening at port ${port}`);
 });
