@@ -7,7 +7,7 @@ const port = process.env.PORT || 3000;
 
 // CORS support
 const corsOptions = {
-	origin: [/\.mingjie\.dev$/, /\.mingjie\.info$/],
+	origin: "*",
 	optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
 
