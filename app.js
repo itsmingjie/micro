@@ -23,6 +23,10 @@ app.use("/api/", api);
 const geoip = require("./routes/geoip.js");
 api.use("/geoip", geoip);
 
+// Toggl data
+const toggl = require("./routes/toggl.js")
+api.use("/toggl", toggl);
+
 // Hit test
 api.get("/", function (req, res) {
   res.status(200).json({message: "Up and running!"}).end();

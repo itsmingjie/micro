@@ -7,11 +7,13 @@
   "author": "Mingjie Jiang <jiang@mingjie.info>",
   "license": "MIT",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-rate-limit": "^5.1.1",
     "geo2zip": "^2.0.2",
     "geoip-lite": "^1.4.1",
     "ipaddr.js": "^1.9.1",
+    "node-fetch": "^2.6.0",
     "us-zips": "^4.0.1"
   },
   "scripts": {
