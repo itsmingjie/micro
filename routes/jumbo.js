@@ -14,7 +14,7 @@ app.get("/", async (req, res) => {
   const template = req.query.template || "default";
   // const filename = uuidv4();
 
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']});
   const page = await browser.newPage();
   const hbsTemplate = Handlebars.compile(
     fs.readFileSync(`./data/jumbo/${template}.html`).toString()
