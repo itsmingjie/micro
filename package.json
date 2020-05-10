@@ -13,9 +13,12 @@
     "express-rate-limit": "^5.1.1",
     "geo2zip": "^2.0.2",
     "geoip-lite": "^1.4.1",
+    "handlebars": "^4.7.6",
     "ipaddr.js": "^1.9.1",
     "node-fetch": "^2.6.0",
-    "us-zips": "^4.0.1"
+    "puppeteer": "^3.0.4",
+    "us-zips": "^4.0.1",
+    "uuid": "^8.0.0"
   },
   "scripts": {
     "start": "node app.js"

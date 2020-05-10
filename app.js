@@ -30,6 +30,10 @@ api.use("/geoip", geoip);
 const toggl = require("./routes/toggl.js");
 api.use("/toggl", toggl);
 
+// Jumbo: generate SEO card from query
+const jumbo = require("./routes/jumbo.js");
+api.use("/jumbo", jumbo);
+
 // Hit test
 api.get("/", function (req, res) {
 	res.status(200).json({ message: "Up and running!" }).end();

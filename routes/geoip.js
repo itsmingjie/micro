@@ -4,7 +4,7 @@ const geoip = require("geoip-lite");
 const geo2zip = require("geo2zip");
 const fs = require("fs");
 
-const agiData = fs.readFileSync("./data/agi.json");
+const agiData = fs.readFileSync("./data/geoip/agi.json");
 const agi = JSON.parse(agiData);
 
 // lookup current IP address
